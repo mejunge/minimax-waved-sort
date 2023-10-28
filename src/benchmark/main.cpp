@@ -127,6 +127,16 @@ int main()
 
     for (auto &distribution : distributions)
     {
+        diff_t s2 = size / 2;
+
+        if (size > ninther_threshold)
+        {
+            sort3(begin, begin + s2, end - 1, comp);
+            sort3(begin + (s2 - 10), begin + s2, begin, comp);
+            std::iter_swap(begin, begin + s2);
+        }
+        else
+            sort3(begin + s2, begin, end - 1, comp);
         for (auto &sort : sorts)
         {
             el.seed(seed);
